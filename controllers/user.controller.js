@@ -2,6 +2,7 @@ import { ObjectId } from 'mongodb';
 import { getDb } from '../database/connect.js';
 
 const getUsers = async (req, res) => {
+  // #swagger.tags = ['Users']
   try {
     const result = await getDb().db().collection('users').find({});
     result.toArray().then(users => {
@@ -14,6 +15,7 @@ const getUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
+  // #swagger.tags = ['Users']
   try {
     const { id } = req.params;
     const userId = new ObjectId(id);
@@ -30,6 +32,7 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+  // #swagger.tags = ['Users']
   try {
     const { firstName, lastName, email, phone, address, age, isActive } =
       req.body;
@@ -57,6 +60,7 @@ const createUser = async (req, res) => {
 };
 
 const updateUserById = async (req, res) => {
+  // #swagger.tags = ['Users']
   try {
     const { id } = req.params;
     const userId = new ObjectId(id);
@@ -89,6 +93,7 @@ const updateUserById = async (req, res) => {
 };
 
 const deleteUserById = async (req, res) => {
+  // #swagger.tags = ['Users']
   try {
     const { id } = req.params;
     const userId = new ObjectId(id);

@@ -1,12 +1,26 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
+    "title": "Contacts and Animals API",
     "description": "Contacts API",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Root",
+      "description": "Root endpoint"
+    },
+    {
+      "name": "Users",
+      "description": "Endpoints for managing users"
+    },
+    {
+      "name": "Animals",
+      "description": "Endpoints for managing animals"
+    }
+  ],
   "schemes": [
     "https",
     "http"
@@ -14,6 +28,9 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "Root"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -24,6 +41,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -31,10 +51,16 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -83,6 +109,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -101,10 +130,16 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -160,6 +195,193 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/animals/": {
+      "get": {
+        "tags": [
+          "Animals"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Animals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "species": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "weight": {
+                  "example": "any"
+                },
+                "habitat": {
+                  "example": "any"
+                },
+                "isEndangered": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/animals/{id}": {
+      "get": {
+        "tags": [
+          "Animals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Animals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "species": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                },
+                "weight": {
+                  "example": "any"
+                },
+                "habitat": {
+                  "example": "any"
+                },
+                "isEndangered": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Animals"
+        ],
         "description": "",
         "parameters": [
           {
