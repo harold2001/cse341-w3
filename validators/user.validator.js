@@ -45,25 +45,38 @@ export const validateUpdateUser = [
     .isMongoId()
     .withMessage('Invalid ID format'),
   body('firstName')
-    .optional()
+    .notEmpty()
+    .withMessage('First name is required')
     .isString()
     .withMessage('First name must be a string'),
   body('lastName')
-    .optional()
+    .notEmpty()
+    .withMessage('Last name is required')
     .isString()
     .withMessage('Last name must be a string'),
-  body('email').optional().isEmail().withMessage('Invalid email format'),
+  body('email')
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Invalid email format'),
   body('phone')
-    .optional()
+    .notEmpty()
+    .withMessage('Phone is required')
     .isMobilePhone()
     .withMessage('Invalid phone number format'),
-  body('address').optional().isString().withMessage('Address must be a string'),
+  body('address')
+    .notEmpty()
+    .withMessage('Address is required')
+    .isString()
+    .withMessage('Address must be a string'),
   body('age')
-    .optional()
+    .notEmpty()
+    .withMessage('Age is required')
     .isInt({ min: 0 })
     .withMessage('Age must be a positive integer'),
   body('isActive')
-    .optional()
+    .notEmpty()
+    .withMessage('isActive is required')
     .isBoolean()
     .withMessage('isActive must be a boolean'),
 ];
