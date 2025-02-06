@@ -6,6 +6,7 @@ import {
   validateIdParam,
 } from '../validators/user.validator.js';
 import { handleValidationErrors } from '../middleware/middleware.js';
+import { isAuthenticated } from '../middleware/authentication.js';
 
 const router = Router();
 
@@ -20,6 +21,7 @@ router.get(
 
 router.post(
   '/',
+  isAuthenticated,
   validateCreateUser,
   handleValidationErrors,
   userController.createUser
@@ -27,6 +29,7 @@ router.post(
 
 router.put(
   '/:id',
+  isAuthenticated,
   validateIdParam,
   validateUpdateUser,
   handleValidationErrors,
@@ -35,6 +38,7 @@ router.put(
 
 router.delete(
   '/:id',
+  isAuthenticated,
   validateIdParam,
   handleValidationErrors,
   userController.deleteUserById

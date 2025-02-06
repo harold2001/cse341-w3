@@ -1,5 +1,5 @@
 import swaggerAutogen from 'swagger-autogen';
-import { DOMAIN } from './config/config.js';
+import { DOMAIN, ENV } from './config/config.js';
 
 const doc = {
   info: {
@@ -7,7 +7,7 @@ const doc = {
     description: 'Contacts API',
   },
   host: DOMAIN,
-  schemes: ['https', 'http'],
+  schemes: ENV === 'development' ? ['http'] : ['https'],
   tags: [
     {
       name: 'Root',
